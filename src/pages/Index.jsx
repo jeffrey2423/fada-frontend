@@ -11,12 +11,14 @@ import {
 const Index = () => {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
+  const [btnSlaOpBasicDisabled, setBtnSlaOpBasicDisabled] = useState(true);
   const [btnSlaOpRecDisabled, setBtnSlaOpRecDisabled] = useState(true);
   const [btnSlaOpDicDisabled, setBtnSlaOpDicDisabled] = useState(true);
   const [btnCopLibRecDisabled, setBtnCopLibRecDisabled] = useState(true);
   const [btnCopLibDicDisabled, setBtnCopLibDicDisabled] = useState(true);
 
   useEffect(() => {
+    setBtnSlaOpBasicDisabled(true);
     setBtnSlaOpRecDisabled(true);
     setBtnSlaOpDicDisabled(true);
     setBtnCopLibRecDisabled(true);
@@ -26,6 +28,7 @@ const Index = () => {
   const onFileChange = (e) => {
     setFile(e.target.files[0]);
     if (!IsUndefinedOrNullOrEmptyOrFalse(e.target.files[0])) {
+      setBtnSlaOpBasicDisabled(false);
       setBtnSlaOpRecDisabled(false);
       setBtnSlaOpDicDisabled(false);
       setBtnCopLibRecDisabled(false);
@@ -92,15 +95,32 @@ const Index = () => {
                   tiempo que la sala se encuentre en funcionamiento en el día.
                 </p>
                 <div className="d-flex justify-content-between">
-                  <button
-                    disabled={btnSlaOpRecDisabled}
-                    onClick={() =>
-                      handleApiFileUpload("SalaOperaciones/SolucionRecursiva")
-                    }
-                    className="btn btn-primary"
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
                   >
-                    Solucion Recursiva
-                  </button>
+                    <button
+                      disabled={btnSlaOpBasicDisabled}
+                      onClick={() =>
+                        handleApiFileUpload("SalaOperaciones/SolucionBasica")
+                      }
+                      className="btn btn-primary"
+                    >
+                      Solucion Basica
+                    </button>
+
+                    <button
+                      disabled={btnSlaOpRecDisabled}
+                      onClick={() =>
+                        handleApiFileUpload("SalaOperaciones/SolucionRecursiva")
+                      }
+                      className="btn btn-primary"
+                    >
+                      Solucion Recursiva
+                    </button>
+                  </div>
+
                   <button
                     disabled={btnSlaOpDicDisabled}
                     onClick={() =>
