@@ -88,7 +88,7 @@ const Index = () => {
                   Optimizando el uso de una sala de operaciones
                 </h5>
                 <p className="card-text">
-                  El hospital desea seleccionar cu´ales procedimientos
+                  El hospital desea seleccionar cuales procedimientos
                   quirurgicos se van a determinar en una sala, para esto se
                   busca asignar los procedimientos a la sala de tal forma que no
                   hayan cruces en los horarios seleccionados y se maximice el
@@ -149,12 +149,18 @@ const Index = () => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <button
+                      onClick={() =>
+                        handleApiFileUpload("CopiaLibros/SolucionRecursiva")
+                      }
                       disabled={btnCopLibRecDisabled}
                       className="btn btn-primary"
                     >
-                      Solucion Recursiva
+                      Solucion Basica
                     </button>
                     <button
+                      onClick={() =>
+                        handleApiFileUpload("CopiaLibros/SolucionDinamica")
+                      }
                       disabled={btnCopLibDicDisabled}
                       className="btn btn-primary"
                     >
