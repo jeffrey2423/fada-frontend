@@ -1,1 +1,1 @@
-export const BASE_URL = "https://backend-fada.vercel.app/api/";
+export const BASE_URL = "https://fada-backend.herokuapp.com/api/";
